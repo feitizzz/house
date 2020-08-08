@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qf.dao.HouseUserMapper">
+  <resultMap id="BaseResultMap" type="com.qf.pojo.HouseUser">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+  </resultMap>
+
+  <select id="login" resultType="com.qf.pojo.HouseUser">
+        select username,password from house_user
+        where username = #{username} and password = #{password};
+  </select>
+
+  <insert id="addUser" parameterType="com.qf.pojo.HouseUser">
+        insert into house_user (username,password,id) values (#{username},#{password},#{id})
+    </insert>
+
+  <sql id="Base_Column_List">
+    id, username, password
+  </sql>
+
+  <insert id="insert" parameterType="com.qf.pojo.HouseUser">
+    insert into house_user ( username, password
+      )
+    values #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}
+      )
+  </insert>
+
+</mapper>
